@@ -13,6 +13,13 @@ const reducer = (state = initialState, action) => {
       posts: state.posts.concat(action.payload),
     });
   }
+
+  if (action.type === 'LOAD_POSTS') {
+    return {
+      ...state,
+      posts: state.posts.concat(action.payload),
+    };
+  }
   return state;
 };
 
