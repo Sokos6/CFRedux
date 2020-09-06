@@ -5,6 +5,17 @@ import './App.css';
 class App extends Component {
   state = { value: '', postId: 2 };
 
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((json) => {
+        this.props.dispatch({
+          type: 'LOAD_POSTS',
+          payload: json,
+        });
+      });
+  }
+
   handleChange = (event) => {
     this.setState({ value: event.target.value });
   };
